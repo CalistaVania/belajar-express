@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title><%= title %></title>
+
 </head>
 <body>
     <h1>Home</h1>
@@ -17,8 +18,17 @@
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/contact">Contact Us</a>
         </li>
+        <li class="nav-item"></li>
+            <a class="nav-link active" aria-current="page" href="/prodi">Daftar Prodi</a>
+        </li>
         
       </ul>
-    <p>Hello</p>
+    <p>Ini halaman home</p>
+
+    <h4>Berita Terkini</h4>
+    <% berita.forEach(data => { %> 
+        <h5><%= data.judul %></h5> 
+        <p><%= data.isi %></p>
+        <% }) %>
 </body>
 </html>

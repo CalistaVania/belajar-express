@@ -2,16 +2,67 @@ const express = require("express") // impor modul express
 const app = express() // inisialisasi express
 const port = 3000 // port
 
+app.set('view engine', 'ejs');
 // route /
 app.get("/", (req, res) => {
     //res.send("Hello");
-    res.sendFile(__dirname + "/home.html");
+    //res.sendFile(__dirname + "/home.html");
+
+    const berita = [
+        {
+            judul: "Berita 1",
+            isi: "Isi Berita 1"
+        },
+        {
+            judul: "Berita 2",
+            isi: "Isi Berita 2"
+        },
+    ];
+    res.render('home', {title: 'Halaman Home', berita});
 });
 
+// route/prodi
+app.get("/prodi", (req, res) => {
+    const prodi = [
+        { 
+            namaProdi: "Sistem Informasi",
+            fakultas: "FIKR",
+            singkatan: "SI"
+        },
+        {
+            namaProdi: "Informatika",
+            fakultas: "FIKR",
+            singkatan: "IF"
+        },
+        {
+            namaProdi: "Teknik Elektro",
+            fakultas: "FIKR",
+            singkatan: "TE"
+        },
+        {
+            namaProdi: "Manajmen Informatika",
+            fakultas: "FIKR",
+            singkatan: "MI"
+        },
+        {
+            namaProdi: "Manajemen",
+            fakultas: "FEB",
+            singkatan: "MJ"
+        },
+        {
+            namaProdi: "Akuntansi",
+            fakultas: "FEB",
+            singkatan: "AK"
+        },
+
+    ];
+    res.render('prodi', {title: 'Daftar Prodi', prodi});
+})
 // route /about
 app.get("/about", (req, res) => {
     // res.send("About Us");
-    res.sendFile(__dirname + "/about.html");
+    //res.sendFile(__dirname + "/about.html");
+    res.render('about', {title: 'Halaman About'});
 });
 
 // route /mahasiswa
@@ -48,7 +99,8 @@ app.get("/dosen", (req, res) => {
 // route /contact
 app.get("/contact", (req,res) => {
     //res.send("Contact Us");
-    res.sendFile(__dirname + "/contact.html");
+    //res.sendFile(__dirname + "/contact.html");
+    res.render('contact', {title: 'Halaman Contact'});
 });
 
 // handle route yang tidak terdaftar
