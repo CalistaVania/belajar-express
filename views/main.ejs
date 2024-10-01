@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <title><%= title %></title>
 
 </head>
 <body>
-    <h1>Home</h1>
-    <ul class="nav nav-pills nav-fill">
+    <ul class="nav nav-pills nav-fill"></ul>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
@@ -23,12 +24,6 @@
         </li>
         
       </ul>
-    <p>Ini halaman home</p>
-
-    <h4>Berita Terkini</h4>
-    <% berita.forEach(data => { %> 
-        <h5><%= data.judul %></h5> 
-        <p><%= data.isi %></p>
-        <% }) %>
+      <%- body %>
 </body>
 </html>

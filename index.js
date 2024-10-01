@@ -1,8 +1,14 @@
 const express = require("express") // impor modul express
 const app = express() // inisialisasi express
+const expressLayout = require("express-ejs-layouts"); // import modul express-ejs-layout
 const port = 3000 // port
 
+app.set("views", __dirname + "/views");
 app.set('view engine', 'ejs');
+
+app.use(expressLayout);
+app.use(express.static('public'));
+
 // route /
 app.get("/", (req, res) => {
     //res.send("Hello");
@@ -18,7 +24,7 @@ app.get("/", (req, res) => {
             isi: "Isi Berita 2"
         },
     ];
-    res.render('home', {title: 'Halaman Home', berita});
+    res.render('home', {title: 'Halaman Home', berita, layout: 'main'});
 });
 
 // route/prodi
@@ -56,13 +62,14 @@ app.get("/prodi", (req, res) => {
         },
 
     ];
-    res.render('prodi', {title: 'Daftar Prodi', prodi});
+    res.render('prodi', {title: 'Daftar Prodi', prodi, layout: 'main'});
 })
+
 // route /about
 app.get("/about", (req, res) => {
     // res.send("About Us");
     //res.sendFile(__dirname + "/about.html");
-    res.render('about', {title: 'Halaman About'});
+    res.render('about', {title: 'About Us', layout: 'main'});
 });
 
 // route /mahasiswa
@@ -100,7 +107,7 @@ app.get("/dosen", (req, res) => {
 app.get("/contact", (req,res) => {
     //res.send("Contact Us");
     //res.sendFile(__dirname + "/contact.html");
-    res.render('contact', {title: 'Halaman Contact'});
+    res.render('contact', {title: 'Halaman Contact', layout: 'main'});
 });
 
 // handle route yang tidak terdaftar
